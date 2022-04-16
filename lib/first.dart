@@ -37,7 +37,7 @@ class MyHomePage extends StatelessWidget {
               ),
               const Padding(
                 padding: EdgeInsets.all(8),
-                child: SelectableText("https://www.breakingbadapi.com/api/characters/",
+                child: SelectableText("Press here your crush id",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black)),
               ),
               Padding(
@@ -47,7 +47,7 @@ class MyHomePage extends StatelessWidget {
                   child: TextFormField(
                     controller: _controller,
                     decoration: InputDecoration(
-                      labelText: "URL + your characters's id",
+                      labelText: "Your characters's id",
                     ),
                   ),
                 ),
@@ -55,7 +55,8 @@ class MyHomePage extends StatelessWidget {
               const SizedBox(height: 25.0),
               ElevatedButton(
                 onPressed: () {
-                  if (_controller.text.isEmpty || !isURL(_controller.text)) {
+                  if (_controller.text.isEmpty || _controller.text.contains(' 0 ')
+                   || _controller.text.contains(RegExp(r'[68-9999999999999999]'))) {
                     print("error");
                   } else {
                     String url = _controller.text;

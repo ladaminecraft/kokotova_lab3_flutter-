@@ -33,7 +33,8 @@ class InputProvider with ChangeNotifier {
   Future<void> fetchStatusCode(url) async {
     _isLoading = true;
     notifyListeners();
-    final response = await http.get(Uri.parse(url));
+    String myURL='https://www.breakingbadapi.com/api/characters/${url}';
+    final response = await http.get(Uri.parse(myURL));
     _data = FanHTTP.fromJson(jsonDecode(response.body));
     _isLoading = false;
     notifyListeners();
